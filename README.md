@@ -6,4 +6,8 @@ gelmediği için spring security kullandım ama değiştireceğim.
 
 -Proje Özet
 Databasedeki kullanıcılar ile giriş yapabiliyoruz. MANAGER ve ADMIN rolleri için ekstra sayfalar var. Ve MANAGER ve ADMIN rolleri
-EMPLOYEE rolünde kullanıcı ekleyebiliyor. 
+EMPLOYEE rolünde kullanıcı ekleyebiliyor.
+
+--04.08.2023--
+
+Personel Yönetimi kısmı neredeyse bitmek üzere. Envanter yönetimi ve login ekranı kısmı eklenecek.
