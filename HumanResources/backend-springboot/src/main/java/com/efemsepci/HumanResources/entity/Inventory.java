@@ -2,6 +2,8 @@ package com.efemsepci.HumanResources.entity;
 
 import com.efemsepci.HumanResources.enums.InventoryStatus;
 import com.efemsepci.HumanResources.enums.InventoryType;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,6 +22,7 @@ public class Inventory {
     private Long id;
 
     @Column(name="inventory_type")
+    @Enumerated(EnumType.STRING)
     private InventoryType inventoryType;
 
     @Column(name="entering_date")
@@ -35,5 +38,11 @@ public class Inventory {
     private String serialNo;
 
     @Column(name="inventory_status")
+    @Enumerated(EnumType.STRING)
     private InventoryStatus inventoryStatus;
+
+    @JsonBackReference
+    @ManyToOne
+    @JoinColumn(name = "assign_id", referencedColumnName = "id")
+    private Personnel personnel;
 }

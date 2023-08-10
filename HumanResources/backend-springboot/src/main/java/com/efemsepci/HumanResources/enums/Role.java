@@ -6,8 +6,7 @@ import lombok.Setter;
 public enum Role {
     ADMIN("Admin"),
     HR_MANAGEMENT("IK Yonetimi"),
-    INVENTORY_MANAGEMENT("Envanter Yonetimi"),
-    PERSONNEL("Personel");
+    INVENTORY_MANAGEMENT("Envanter Yonetimi");
 
     @Getter
     @Setter

@@ -4,11 +4,14 @@ import com.efemsepci.HumanResources.enums.Department;
 import com.efemsepci.HumanResources.enums.GraduationStatus;
 import com.efemsepci.HumanResources.enums.Job;
 import com.efemsepci.HumanResources.enums.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 
 
 @Entity
@@ -55,5 +58,11 @@ public class Personnel {
 
     @Column(name = "is_working")
     private String isWorking;
+
+    @Column(name = "image")
+    private String imageBase64;
+
+    @OneToMany(mappedBy = "personnel")
+    private List<Inventory> inventories;
 
 }

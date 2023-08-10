@@ -1,13 +1,15 @@
 package com.efemsepci.HumanResources.service;
 
+
 import com.efemsepci.HumanResources.entity.Personnel;
 import com.efemsepci.HumanResources.exception.ResourceNotFoundException;
+import com.efemsepci.HumanResources.repository.InventoryRepository;
 import com.efemsepci.HumanResources.repository.PersonnelRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
+
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +21,8 @@ public class PersonnelServiceImpl implements PersonnelService{
 
     @Autowired
     private PersonnelRepository personnelRepository;
+    @Autowired
+    private InventoryRepository inventoryRepository;
 
 
     @Override
@@ -62,8 +66,11 @@ public class PersonnelServiceImpl implements PersonnelService{
         tempPersonnel.setIsWorking(personnel.getIsWorking());
         tempPersonnel.setMaritalStatus(personnel.getMaritalStatus());
         tempPersonnel.setGraduationStatus(personnel.getGraduationStatus());
+        tempPersonnel.setImageBase64(personnel.getImageBase64());
 
         Personnel updatedPersonnel = personnelRepository.save(tempPersonnel);
         return ResponseEntity.ok(updatedPersonnel);
     }
+
+
 }

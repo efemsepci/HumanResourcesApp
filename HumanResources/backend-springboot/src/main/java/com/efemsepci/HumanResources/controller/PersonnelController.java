@@ -1,5 +1,6 @@
 package com.efemsepci.HumanResources.controller;
 
+
 import com.efemsepci.HumanResources.entity.Personnel;
 import com.efemsepci.HumanResources.service.PersonnelService;
 import lombok.AllArgsConstructor;
@@ -11,7 +12,7 @@ import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/hr")
 @AllArgsConstructor
 public class PersonnelController {
 
@@ -41,5 +42,7 @@ public class PersonnelController {
     public ResponseEntity<Map<String,Boolean>> deletePersonnel(@PathVariable Long id){
         return personnelService.deletePersonnelById(id);
     }
+
+
 
 }
