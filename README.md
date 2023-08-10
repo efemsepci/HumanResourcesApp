@@ -11,3 +11,7 @@ EMPLOYEE rolünde kullanıcı ekleyebiliyor.
 --04.08.2023--
 
 Personel Yönetimi kısmı neredeyse bitmek üzere. Envanter yönetimi ve login ekranı kısmı eklenecek.
+
+--11.08.2023--
+
+Uygulama bitti.
