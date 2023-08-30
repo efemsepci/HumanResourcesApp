@@ -15,3 +15,7 @@ Personel Yönetimi kısmı neredeyse bitmek üzere. Envanter yönetimi ve login 
 --11.08.2023--
 
 Uygulama bitti.
+
+--30.08.2023--
+
+Backendde hata tespit edilip düzeltildi. Frontend kısmında iyileştirmeler yapıldı ve protected route eklendi.
