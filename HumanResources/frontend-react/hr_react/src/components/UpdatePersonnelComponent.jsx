@@ -19,6 +19,8 @@ const UpdatePersonnelComponent = () =>{
         isWorking: '',
         imageBase64:null
     });
+
+    const [errorMessage, setErrorMessage] = useState("");
     
 
 
@@ -33,7 +35,9 @@ const UpdatePersonnelComponent = () =>{
         });
       }, [id])
 
-      const tcControl = (tc) =>{
+
+     const tcControl = (tc) =>{
+
         var odd = 0, even = 0, result = 0, tcSum=0;
 
         if(tc.length != 11) return false;
@@ -82,7 +86,7 @@ const UpdatePersonnelComponent = () =>{
             });
           }
           else{
-            alert('Invalid tc!')
+            setErrorMessage("Invalid TC!");
           }
 
             }
@@ -135,6 +139,9 @@ const UpdatePersonnelComponent = () =>{
                               <div className='form-group'>
                                   <label>TCKN</label>
                                   <input maxLength={255} placeholder='TCKN' name='tcNo' className='form-control' value={personnel.tcNo} onChange={(e) => setPersonnel({...personnel, tcNo: e.target.value})}/>
+                              </div>
+                              <div className='form-group'>
+                                <p style={{color: 'red'}}>{errorMessage}</p>
                               </div>
                               <div className='form-group'>
                                   <label>Graduation Status</label>

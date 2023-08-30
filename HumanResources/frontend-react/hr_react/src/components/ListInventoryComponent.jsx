@@ -60,6 +60,12 @@ export default class ListInventoryComponent extends Component {
           <div className='row'>
              <Link to="/" className="btn btn-danger" onClick={localStorage.removeItem('userRole')}>Exit</Link>
         </div>
+        <div>
+          <br></br>
+        </div>
+        <div className='row'>
+          <Link to="/admin" className="btn btn-secondary">Admin</Link>
+        </div>
         <h2 className="text-center">Inventory List</h2>
 
         <div className='row'>

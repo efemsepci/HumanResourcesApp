@@ -17,7 +17,9 @@ export default class AddPersonnelComponent extends Component {
             department:'',
             job:'',
             isWorking:'',
-            imageBase64:null
+            imageBase64:null,
+            allTc:[],
+            errorMessage:""
         }
         this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
         this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
@@ -36,9 +38,20 @@ export default class AddPersonnelComponent extends Component {
         this.tcNoControl = this.tcNoControl.bind(this);
     }
 
+    componentDidMount() {
+        PersonnelService.getPersonnel()
+      .then(data => {
+        const tcNumbers = data.data.map(person => person.tcNo);
+        this.setState({ allTc: tcNumbers });
+      })
+      .catch(error => {
+        console.error('Error fetching tcnos:', error);
+      });
+    }
+
     addPersonnel = (e) =>{
         e.preventDefault();
-
+        console.log(this.state.allTc);
         let personnel = {firstName: this.state.firstName, lastName: this.state.lastName, gender: this.state.gender, birthDate: this.state.birthDate, maritalStatus: this.state.maritalStatus, tcNo: this.state.tcNo, graduationStatus: this.state.graduationStatus, department: this.state.department, job: this.state.job, isWorking: this.state.isWorking, imageBase64: this.state.imageBase64
         };
 
@@ -46,13 +59,18 @@ export default class AddPersonnelComponent extends Component {
             PersonnelService.createPersonnel(personnel)
         }
         else{
-            alert('Invalid tc!')
+            this.setState({errorMessage: "Invalid TC!"});
         }
     }
 
 
 
     tcNoControl = (tc) =>{
+
+        for(var i = 0; i<this.state.allTc.length; i++){
+            if(this.state.allTc[i] == tc) return false;
+        }
+        
         var odd = 0, even = 0, result = 0, tcSum=0;
 
         if(tc.length != 11) return false;
@@ -157,6 +175,9 @@ export default class AddPersonnelComponent extends Component {
                                 <label>TCKN</label>
                                 <input maxLength={255} placeholder='TCKN' name='tcNo' className='form-control' value={this.state.tcNo} onChange={this.changeTcNOHandler}/>
                             </div>
+                            <div className='form-group'>
+                                <p style={{color: 'red'}}>{this.state.errorMessage}</p>
+                             </div>
                             <div className='form-group'>
                                 <label>Graduation Status</label>
                                 <select style={{marginLeft:"10px"}} onChange = {this.changeGraduationStatusHandler} value = {this.state.graduationStatus}>

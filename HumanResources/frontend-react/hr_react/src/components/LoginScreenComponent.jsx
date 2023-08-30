@@ -30,16 +30,14 @@ const LoginScreenComponent = () => {
             (user1) => {
                 if((username === user1.username) && (password === user1.password)){
                     userMatch = user1;
-                    localStorage.setItem('userRole', userMatch.role);
-                    
                 }
             }
         )
         if(userMatch){
             setCanLogin(true);
+            sessionStorage.setItem('userRole', userMatch.role);
             console.log('Login succesful');
-            
-
+        
             if(userMatch.role === 'ADMIN'){
                 navigate('/admin');
             }
@@ -54,6 +52,7 @@ const LoginScreenComponent = () => {
             setCanLogin(false)
             setMessage('Invalid username or password!');
         }
+        console.log(localStorage.getItem("userRole"));
     }
 
     

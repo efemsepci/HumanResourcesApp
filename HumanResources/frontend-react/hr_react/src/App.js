@@ -13,10 +13,10 @@ import LoginScreenComponent from "./components/LoginScreenComponent";
 import { useState } from "react";
 import AdminPageComponent from "./components/AdminPageComponent";
 import AddUserScreenComponent from "./components/AddUserScreenComponent";
+import ProtectedRoute from "./components/ProtectedRoute";
+import UnauthorizedPage from "./components/UnauthorizedPageComponent";
 
 function App() {
-  const userRole = localStorage.getItem("userRole");
-
   return (
     <div>
       <Router>
@@ -24,40 +24,96 @@ function App() {
           <div className="container">
             <Routes>
               <Route path="/" exact element={<LoginScreenComponent />}></Route>
-              <Route path="/personnel" element={<ListPersonnelComponent />} />
+              <Route
+                path="/personnel"
+                element={
+                  <ProtectedRoute allowedRoles={["ADMIN", "HR_MANAGEMENT"]}>
+                    <ListPersonnelComponent />
+                  </ProtectedRoute>
+                }
+              />
               <Route
                 path="/add-personnel"
-                element={<AddPersonnelComponent />}
+                element={
+                  <ProtectedRoute allowedRoles={["ADMIN", "HR_MANAGEMENT"]}>
+                    <AddPersonnelComponent />
+                  </ProtectedRoute>
+                }
               ></Route>
               <Route
                 exact
                 path="/view-personnel/:id"
-                element={<PersonnelDetailsComponent />}
+                element={
+                  <ProtectedRoute allowedRoles={["ADMIN", "HR_MANAGEMENT"]}>
+                    <PersonnelDetailsComponent />
+                  </ProtectedRoute>
+                }
               ></Route>
               <Route
                 path="/update-personnel/:id"
-                element={<UpdatePersonnelComponent />}
+                element={
+                  <ProtectedRoute allowedRoles={["ADMIN", "HR_MANAGEMENT"]}>
+                    <UpdatePersonnelComponent />
+                  </ProtectedRoute>
+                }
               ></Route>
               <Route
                 path="/inventory"
-                element={<ListInventoryComponent />}
+                element={
+                  <ProtectedRoute
+                    allowedRoles={["ADMIN", "INVENTORY_MANAGEMENT"]}
+                  >
+                    <ListInventoryComponent />
+                  </ProtectedRoute>
+                }
               ></Route>
               <Route
                 path="/add-inventory"
-                element={<AddInventoryComponent />}
+                element={
+                  <ProtectedRoute
+                    allowedRoles={["ADMIN", "INVENTORY_MANAGEMENT"]}
+                  >
+                    <AddInventoryComponent />
+                  </ProtectedRoute>
+                }
               ></Route>
               <Route
                 path="/view-possible-inventory/:id"
-                element={<ListAddInventoryComponent />}
+                element={
+                  <ProtectedRoute allowedRoles={["ADMIN", "HR_MANAGEMENT"]}>
+                    <ListAddInventoryComponent />
+                  </ProtectedRoute>
+                }
               ></Route>
               <Route
                 path="update-inventory/:id"
-                element={<UpdateInventoryComponent />}
+                element={
+                  <ProtectedRoute
+                    allowedRoles={["ADMIN", "INVENTORY_MANAGEMENT"]}
+                  >
+                    <UpdateInventoryComponent />
+                  </ProtectedRoute>
+                }
               ></Route>
-              <Route path="/admin" element={<AdminPageComponent />}></Route>
+              <Route
+                path="/admin"
+                element={
+                  <ProtectedRoute allowedRoles={["ADMIN"]}>
+                    <AdminPageComponent />
+                  </ProtectedRoute>
+                }
+              ></Route>
               <Route
                 path="/add-user"
-                element={<AddUserScreenComponent />}
+                element={
+                  <ProtectedRoute allowedRoles={["ADMIN"]}>
+                    <AddUserScreenComponent />
+                  </ProtectedRoute>
+                }
+              ></Route>
+              <Route
+                path="/unauthorized"
+                element={<UnauthorizedPage />}
               ></Route>
             </Routes>
           </div>
