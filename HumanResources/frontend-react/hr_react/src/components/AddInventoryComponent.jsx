@@ -68,8 +68,8 @@ export default class AddInventoryComponent extends Component {
                         <form>
                             <div className='form-group'>
                                 <label>Inventory Type</label>
-                                <select onChange={this.changeInventoryTypeHandler} value = {this.state.inventoryType}>
-                                    <option selected hidden>Select a option</option>
+                                <select style={{marginLeft:"10px"}} onChange={this.changeInventoryTypeHandler} value = {this.state.inventoryType}>
+                                    <option selected hidden>Select inventory type</option>
                                     <option value = 'MOUSE'>Mouse</option>
                                     <option value = 'COMPUTER'>Computer</option>
                                     <option value = 'DISK'>Disk</option>
@@ -78,24 +78,24 @@ export default class AddInventoryComponent extends Component {
                             </div>
                             <div className='form-group'>
                                 <label>Entering Date</label>
-                                <input placeholder='XX/XX/XXXX' name='enteringDate' className='form-control' value={this.state.enteringDate} onChange={this.changeEnteringDateHandler}/>
+                                <input maxLength={10} type="date" name='enteringDate' className='form-control' value={this.state.enteringDate} onChange={this.changeEnteringDateHandler}/>
                             </div>
                             <div className='form-group'>
                                 <label>Brand</label>
-                                <input placeholder='Brand' name='brand' className='form-control' value={this.state.brand} onChange={this.changeBrandHandler}/>
+                                <input maxLength={255} placeholder='Brand' name='brand' className='form-control' value={this.state.brand} onChange={this.changeBrandHandler}/>
                             </div>
                             <div className='form-group'>
                                 <label>Model</label>
-                                <input placeholder='Model' name='model' className='form-control' value={this.state.model} onChange={this.changeModelHandler}/>
+                                <input maxLength={255} placeholder='Model' name='model' className='form-control' value={this.state.model} onChange={this.changeModelHandler}/>
                             </div>
                             <div className='form-group'>
                                 <label>Serial No</label>
-                                <input placeholder='Serial No' name='serialNo' className='form-control' value={this.state.serialNo} onChange={this.changeSerialNoHandler}/>
+                                <input maxLength={255} placeholder='Serial No' name='serialNo' className='form-control' value={this.state.serialNo} onChange={this.changeSerialNoHandler}/>
                             </div>
                             <div className='form-group'>
                                 <label>Status</label>
-                                <select onChange = {this.changeInventoryStatusHandler} value = {this.state.inventoryStatus}>
-                                    <option selected hidden>Select a option</option>
+                                <select style={{marginLeft:"10px"}} onChange = {this.changeInventoryStatusHandler} value = {this.state.inventoryStatus}>
+                                    <option selected hidden>Select inventory status</option>
                                     <option value = 'IN_STAFF'>In Staff</option>
                                     <option value = 'IN_THE_OFFICE'>In the Office</option>
                                     <option value = 'IN_STORAGE'>In Storage</option>

@@ -65,6 +65,7 @@ public class InventoryServiceImpl implements InventoryService {
         return inventoryRepository.save(inventory);
     }
 
+
     @Override
     public ResponseEntity<Inventory> updateInventoryById(Long id, Inventory inventory) {
         Inventory tempInventory = inventoryRepository.findById(id)

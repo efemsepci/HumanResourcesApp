@@ -61,8 +61,8 @@ export default class AddUserScreenComponent extends Component {
                             </div>
                             <div className='form-group'>
                                 <label>Role</label>
-                                <select onChange={this.changeRoleHandler} value = {this.state.role}>
-                                    <option selected hidden>Select a option</option>
+                                <select style={{marginLeft:"10px"}} onChange={this.changeRoleHandler} value = {this.state.role}>
+                                    <option selected hidden>Select role</option>
                                     <option value = 'ADMIN'>Admin</option>
                                     <option value = 'HR_MANAGEMENT'>HR Manager</option>
                                     <option value = 'INVENTORY_MANAGEMENT'>Inventory Manager</option>

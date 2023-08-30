@@ -128,40 +128,39 @@ export default class AddPersonnelComponent extends Component {
                         <form>
                             <div className='form-group'>
                                 <label>First Name</label>
-                                <input placeholder='First Name' name='firstName' className='form-control' value={this.state.firstName} onChange={this.changeFirstNameHandler}/>
+                                <input maxLength={255} placeholder='First Name' name='firstName' className='form-control' value={this.state.firstName} onChange={this.changeFirstNameHandler}/>
                             </div>
                             <div className='form-group'>
                                 <label>Last Name</label>
-                                <input placeholder='Last Name' name='lastName' className='form-control' value={this.state.lastName} onChange={this.changeLastNameHandler}/>
+                                <input maxLength={255} placeholder='Last Name' name='lastName' className='form-control' value={this.state.lastName} onChange={this.changeLastNameHandler}/>
                             </div>
                             <div className='form-group'>
                                 <label>Gender</label>
-                                <select onChange={this.changeGenderHandler} value = {this.state.gender}>
-                                    <option selected hidden>Select a option</option>
-                                    <option value = 'M'>M</option>
-                                    <option value = 'F'>F</option>
-                                </select>
+                                <div onChange={this.changeGenderHandler}>
+                                    <input type="radio" value="M" name="gender" /> Male
+                                    <input style={{marginLeft:"10px"}} type="radio" value="F" name="gender" /> Female
+                                    <input style={{marginLeft:"10px"}} type="radio" value="O" name="gender" /> Other
+                                </div>
                             </div>
                             <div className='form-group'>
                                 <label>Birth Date</label>
-                                <input placeholder='XX.XX.XXXX' name='birthDate' className='form-control' value={this.state.birthDate} onChange={this.changeBirthDateHandler}/>
+                                <input type="date" maxLength={10} name='birthDate' className='form-control' value={this.state.birthDate} onChange={this.changeBirthDateHandler}/>
                             </div>
                             <div className='form-group'>
                                 <label>Marital Status</label>
-                                <select onChange={this.changeMaritalStatusHandler} value = {this.state.maritalStatus}>
-                                    <option selected hidden>Select a option</option>
-                                    <option value = 'evli'>Evli</option>
-                                    <option value = 'bekar'>Bekar</option>
-                                </select>
+                                <div onChange={this.changeMaritalStatusHandler}>
+                                    <input type="radio" value="evli" name="maritalStatus" /> Evli
+                                    <input style={{marginLeft:"10px"}} type="radio" value="bekar" name="maritalStatus" /> Bekar
+                                </div>
                             </div>
                             <div className='form-group'>
                                 <label>TCKN</label>
-                                <input placeholder='TCKN' name='tcNo' className='form-control' value={this.state.tcNo} onChange={this.changeTcNOHandler}/>
+                                <input maxLength={255} placeholder='TCKN' name='tcNo' className='form-control' value={this.state.tcNo} onChange={this.changeTcNOHandler}/>
                             </div>
                             <div className='form-group'>
                                 <label>Graduation Status</label>
-                                <select onChange = {this.changeGraduationStatusHandler} value = {this.state.graduationStatus}>
-                                    <option selected hidden>Select a option</option>
+                                <select style={{marginLeft:"10px"}} onChange = {this.changeGraduationStatusHandler} value = {this.state.graduationStatus}>
+                                    <option selected hidden>Select Graduation Status</option>
                                     <option value = 'UNDER_GRADUATE'>Under Graduate</option>
                                     <option value = 'ASSOCIATE_DEGREE'>Associate Degree</option>
                                     <option value = 'POST_GRADUATE'>Post Graduate</option>
@@ -170,32 +169,31 @@ export default class AddPersonnelComponent extends Component {
                             </div>
                             <div className='form-group'>
                                 <label>Department</label>
-                                <select onChange = {this.changeDepartmentHandler} value = {this.state.department}>
-                                    <option selected hidden>Select a option</option>
+                                <select style={{marginLeft:"10px"}} onChange = {this.changeDepartmentHandler} value = {this.state.department}>
+                                    <option selected hidden>Select Department</option>
                                     <option value = 'SOFTWARE_DEVELOPMENT'>Software Development</option>
                                     <option value = 'RESEARCH_DEVELOPMENT'>Research Development</option>
                                 </select>
                             </div>
                             <div className='form-group'>
                                 <label>Job</label>
-                                <select onChange = {this.changeJobHandler} value = {this.state.job}>
-                                    <option selected hidden>Select a option</option>
+                                <select style={{marginLeft:"10px"}} onChange = {this.changeJobHandler} value = {this.state.job}>
+                                    <option selected hidden>Select Job</option>
                                     <option value = 'SOFTWARE_DEVELOPER'>Software Developer</option>
                                     <option value = 'ASSISTANT_DIRECTOR'>Assistant Director</option>
                                     <option value = 'DIRECTOR'>Director</option>
                                 </select>
                             </div>
                             <div className='form-group'>
-                                <label>is working</label>
-                                <select onChange={this.changeIsWorkingHandler} value = {this.state.isWorking}>
-                                    <option selected hidden>Select a option</option>
-                                    <option value = 'Yes'>Yes</option>
-                                    <option value = 'No'>No</option>
-                                </select>
+                                <label>Is Working</label>
+                                <div onChange={this.changeIsWorkingHandler}>
+                                    <input type="radio" value="Yes" name="isWorking" /> Yes
+                                    <input style={{marginLeft:"10px"}} type="radio" value="No" name="isWorking" /> No
+                                </div>
                             </div>
                             <div className='form-group'>
                                 <label>Photo</label>
-                                <input type='file' accept="/image/*" onChange={this.changeImageHandler}></input>
+                                <input style={{marginLeft:"10px"}} type='file' accept="/image/*" onChange={this.changeImageHandler}></input>
                             </div>
                             <Link to="/personnel" className="btn btn-success" onClick={this.addPersonnel}>Save</Link>
                             <Link to="/personnel" className="btn btn-danger">Cancel</Link>

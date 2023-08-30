@@ -33,13 +33,13 @@ export default class AdminPageComponent extends Component {
         </div>
         <h2 className="text-center">User List</h2>
         <div className='row'>
-             <Link to="/add-user" className="btn btn-primary">Add User</Link>
-        </div>
-        <div className='row'>
-             <Link to="/personnel" className="btn btn-success">Personnel List</Link>
-        </div>
-        <div className='row'>
-             <Link to="/inventory" className="btn btn-dark">Inventory List</Link>
+            <tbody style={{marginRight:"10px"}}>
+                <td>
+                    <Link to="/add-user" className="btn btn-primary">Add User</Link>
+                    <Link style={{marginLeft:"10px"}} to="/personnel" className="btn btn-success">Personnel List</Link>
+                    <Link style={{marginLeft:"10px"}} to="/inventory" className="btn btn-dark">Inventory List</Link>
+                </td>
+            </tbody>
         </div>
         <div className = "row">
             <table className = "table table-striped table-bordered">

@@ -107,40 +107,39 @@ const UpdatePersonnelComponent = () =>{
                           <form>
                               <div className='form-group'>
                                   <label>First Name</label>
-                                  <input name='firstName' className='form-control' value={personnel.firstName} onChange={(e) => setPersonnel({...personnel, firstName: e.target.value})}/>
+                                  <input maxLength={255} name='firstName' className='form-control' value={personnel.firstName} onChange={(e) => setPersonnel({...personnel, firstName: e.target.value})}/>
                               </div>
                               <div className='form-group'>
                                   <label>Last Name</label>
-                                  <input placeholder='Last Name' name='lastName' className='form-control' value={personnel.lastName} onChange={(e) => setPersonnel({...personnel, lastName: e.target.value})}/>
+                                  <input maxLength={255} placeholder='Last Name' name='lastName' className='form-control' value={personnel.lastName} onChange={(e) => setPersonnel({...personnel, lastName: e.target.value})}/>
                               </div>
                               <div className='form-group'>
-                                  <label>Gender</label>
-                                  <select onChange={(e) => setPersonnel({...personnel, gender: e.target.value})} value = {personnel.gender}>
-                                      <option selected hidden>Select a option</option>
-                                      <option value = 'M'>M</option>
-                                      <option value = 'F'>F</option>
-                                  </select>
-                              </div>
+                                <label>Gender</label>
+                                <div onChange={(e) => setPersonnel({...personnel, gender: e.target.value})}>
+                                    <input checked = {personnel.gender === "M"} type="radio" value="M" name="gender" /> Male
+                                    <input checked = {personnel.gender === "F"}  style={{marginLeft:"10px"}} type="radio" value="F" name="gender" /> Female
+                                    <input checked = {personnel.gender === "O"}  style={{marginLeft:"10px"}} type="radio" value="O" name="gender" /> Other
+                                </div>
+                            </div>
                               <div className='form-group'>
                                   <label>Birth Date</label>
-                                  <input placeholder='XX.XX.XXXX' name='birthDate' className='form-control' value={personnel.birthDate} onChange={(e) => setPersonnel({...personnel, birthDate: e.target.value})}/>
+                                  <input type="date" maxLength={10} name='birthDate' className='form-control' value={personnel.birthDate} onChange={(e) => setPersonnel({...personnel, birthDate: e.target.value})}/>
                               </div>
                               <div className='form-group'>
                                   <label>Marital Status</label>
-                                  <select onChange={(e) => setPersonnel({...personnel, maritalStatus: e.target.value})} value = {personnel.maritalStatus}>
-                                      <option selected hidden>Select a option</option>
-                                      <option value = 'evli'>Evli</option>
-                                      <option value = 'bekar'>Bekar</option>
-                                  </select>
+                                  <div onChange={(e) => setPersonnel({...personnel, maritalStatus: e.target.value})}>
+                                    <input checked = {personnel.maritalStatus === "evli"} type="radio" value="evli" name="maritalStatus" /> Evli
+                                    <input checked = {personnel.maritalStatus === "bekar"}  style={{marginLeft:"10px"}} type="radio" value="bekar" name="maritalStatus" /> Bekar
+                                </div>
                               </div>
                               <div className='form-group'>
                                   <label>TCKN</label>
-                                  <input placeholder='TCKN' name='tcNo' className='form-control' value={personnel.tcNo} onChange={(e) => setPersonnel({...personnel, tcNo: e.target.value})}/>
+                                  <input maxLength={255} placeholder='TCKN' name='tcNo' className='form-control' value={personnel.tcNo} onChange={(e) => setPersonnel({...personnel, tcNo: e.target.value})}/>
                               </div>
                               <div className='form-group'>
                                   <label>Graduation Status</label>
-                                  <select onChange = {(e) => setPersonnel({...personnel, graduationStatus: e.target.value})} value = {personnel.graduationStatus}>
-                                      <option selected hidden>Select a option</option>
+                                  <select style={{marginLeft:"10px"}} onChange = {(e) => setPersonnel({...personnel, graduationStatus: e.target.value})} value = {personnel.graduationStatus}>
+                                      <option selected hidden>Select Graduation Status</option>
                                       <option value = 'UNDER_GRADUATE'>Under Graduate</option>
                                       <option value = 'ASSOCIATE_DEGREE'>Associate Degree</option>
                                       <option value = 'POST_GRADUATE'>Post Graduate</option>
@@ -149,32 +148,31 @@ const UpdatePersonnelComponent = () =>{
                               </div>
                               <div className='form-group'>
                                   <label>Department</label>
-                                  <select onChange = {(e) => setPersonnel({...personnel, department: e.target.value})} value = {personnel.department}>
-                                      <option selected hidden>Select a option</option>
+                                  <select style={{marginLeft:"10px"}} onChange = {(e) => setPersonnel({...personnel, department: e.target.value})} value = {personnel.department}>
+                                      <option selected hidden>Select Department</option>
                                       <option value = 'SOFTWARE_DEVELOPMENT'>Software Development</option>
                                       <option value = 'RESEARCH_DEVELOPMENT'>Research Development</option>
                                   </select>
                               </div>
                               <div className='form-group'>
                                   <label>Job</label>
-                                  <select onChange = {(e) => setPersonnel({...personnel, job: e.target.value})} value = {personnel.job}>
-                                      <option selected hidden>Select a option</option>
+                                  <select style={{marginLeft:"10px"}} onChange = {(e) => setPersonnel({...personnel, job: e.target.value})} value = {personnel.job}>
+                                      <option selected hidden>Select Job</option>
                                       <option value = 'SOFTWARE_DEVELOPER'>Software Developer</option>
                                       <option value = 'ASSISTANT_DIRECTOR'>Assistant Director</option>
                                       <option value = 'DIRECTOR'>Director</option>
                                   </select>
                               </div>
                               <div className='form-group'>
-                                  <label>is working</label>
-                                  <select onChange={(e) => setPersonnel({...personnel, isWorking: e.target.value})} value = {personnel.isWorking}>
-                                      <option selected hidden>Select a option</option>
-                                      <option value = 'Yes'>Yes</option>
-                                      <option value = 'No'>No</option>
-                                  </select>
+                                  <label>Is Working</label>
+                                  <div onChange={(e) => setPersonnel({...personnel, isWorking: e.target.value})}>
+                                    <input checked = {personnel.isWorking === "Yes"} type="radio" value="Yes" name="isWorking" /> Yes
+                                    <input checked = {personnel.isWorking === "No"}  style={{marginLeft:"10px"}} type="radio" value="No" name="isWorking" /> No
+                                </div>
                               </div>
                               <div className='form-group'>
                                 <label>Photo</label>
-                                <input type='file' accept="/image/*" onChange={changeImageHandler}></input>
+                                <input style={{marginLeft:"10px"}} type='file' accept="/image/*" onChange={changeImageHandler}></input>
                             </div>
                               <Link to="/personnel" className="btn btn-success" onClick={handleUpdate} >Update</Link>
                               <Link to="/personnel" className="btn btn-danger">Cancel</Link>

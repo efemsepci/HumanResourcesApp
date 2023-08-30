@@ -38,11 +38,14 @@ const ListAddInventoryComponent = () =>{
     return(
         <div>
             <h2>Inventory List</h2>
-            <Link to="/personnel" className="btn btn-primary">Go Back</Link>
+            <div style = {{marginRight:"10px"}} className='row'>
+                <Link  to="/personnel" className="btn btn-primary">Go Back</Link>
+            </div>
+            <div><br></br></div>
             <div className = "row">
-            <div className="search">
+            <div className="search" style={{height:50}}>
                 <select id={search}  value = {search} onChange={(e) => setSearch(e.target.value)}>
-                    <option selected hidden>Select a option</option>
+                    <option selected hidden>Select a inventory type</option>
                     <option value = 'MOUSE'>Mouse</option>
                     <option value = 'COMPUTER'>Computer</option>
                     <option value = 'DISK'>Disk</option>

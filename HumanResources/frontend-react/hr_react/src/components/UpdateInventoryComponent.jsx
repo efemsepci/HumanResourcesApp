@@ -63,8 +63,8 @@ const UpdateInventoryComponent = () =>{
                         <form>
                             <div className='form-group'>
                                 <label>Inventory Type</label>
-                                <select onChange={(e) => setInventory({...inventory, inventoryType: e.target.value})} value = {inventory.inventoryType}>
-                                    <option selected hidden>Select a option</option>
+                                <select style={{marginLeft:"10px"}} onChange={(e) => setInventory({...inventory, inventoryType: e.target.value})} value = {inventory.inventoryType}>
+                                    <option selected hidden>Select inventory type</option>
                                     <option value = 'MOUSE'>Mouse</option>
                                     <option value = 'COMPUTER'>Computer</option>
                                     <option value = 'DISK'>Disk</option>
@@ -73,7 +73,7 @@ const UpdateInventoryComponent = () =>{
                             </div>
                             <div className='form-group'>
                                 <label>Entering Date</label>
-                                <input placeholder='XX/XX/XXXX' name='enteringDate' className='form-control' value={inventory.enteringDate} onChange={(e) => setInventory({...inventory, enteringDate: e.target.value})}/>
+                                <input type="date" name='enteringDate' className='form-control' value={inventory.enteringDate} onChange={(e) => setInventory({...inventory, enteringDate: e.target.value})}/>
                             </div>
                             <div className='form-group'>
                                 <label>Brand</label>
@@ -89,8 +89,8 @@ const UpdateInventoryComponent = () =>{
                             </div>
                             <div className='form-group'>
                                 <label>Status</label>
-                                <select onChange = {(e) => setInventory({...inventory, inventoryStatus: e.target.value})} value = {inventory.inventoryStatus}>
-                                    <option selected hidden>Select a option</option>
+                                <select style={{marginLeft:"10px"}} onChange = {(e) => setInventory({...inventory, inventoryStatus: e.target.value})} value = {inventory.inventoryStatus}>
+                                    <option selected hidden>Select inventory status</option>
                                     <option value = 'IN_STAFF'>In Staff</option>
                                     <option value = 'IN_THE_OFFICE'>In the Office</option>
                                     <option value = 'IN_STORAGE'>In Storage</option>

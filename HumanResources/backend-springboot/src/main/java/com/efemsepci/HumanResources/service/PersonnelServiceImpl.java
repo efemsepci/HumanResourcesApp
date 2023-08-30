@@ -1,10 +1,13 @@
 package com.efemsepci.HumanResources.service;
 
 
+import com.efemsepci.HumanResources.entity.Inventory;
 import com.efemsepci.HumanResources.entity.Personnel;
+import com.efemsepci.HumanResources.enums.InventoryStatus;
 import com.efemsepci.HumanResources.exception.ResourceNotFoundException;
 import com.efemsepci.HumanResources.repository.InventoryRepository;
 import com.efemsepci.HumanResources.repository.PersonnelRepository;
+import com.efemsepci.HumanResources.service.InventoryService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +26,7 @@ public class PersonnelServiceImpl implements PersonnelService{
     private PersonnelRepository personnelRepository;
     @Autowired
     private InventoryRepository inventoryRepository;
+
 
 
     @Override
@@ -46,6 +50,14 @@ public class PersonnelServiceImpl implements PersonnelService{
     public ResponseEntity<Map<String,Boolean>> deletePersonnelById(Long id) {
         Personnel personnel = personnelRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Personnel not exist with id: " + id));
+
+        List<Inventory> inventories = personnel.getInventories();
+        for(int i = 0; i < inventories.size(); i++){
+            Inventory tempInventory = inventories.get(i);
+            tempInventory.setPersonnel(null);
+            tempInventory.setInventoryStatus(InventoryStatus.IN_STORAGE);
+        }
+
         personnelRepository.delete(personnel);
         Map<String,Boolean> response = new HashMap<>();
         response.put("deleted",Boolean.TRUE);

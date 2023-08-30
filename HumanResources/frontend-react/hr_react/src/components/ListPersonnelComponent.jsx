@@ -74,6 +74,9 @@ export default class ListPersonnelComponent extends Component {
         <div className='row'>
              <Link to="/add-personnel" className="btn btn-primary">Add Personnel</Link>
         </div>
+        <div className='row'>
+          <br></br>
+        </div>
 
         <div className='row'>
             <div className="search">
@@ -107,14 +110,14 @@ export default class ListPersonnelComponent extends Component {
                 />
             </div>
             <div className="search">
-                <select value = {departmentFilter} onChange={(e) => this.handleFilterChange('departmentFilter', e.target.value)}>
-                    <option selected hidden>Select a option</option>
+                <select style={{ width: 200 , height: 55}} value = {departmentFilter} onChange={(e) => this.handleFilterChange('departmentFilter', e.target.value)}>
+                    <option selected hidden>Department</option>
                     <option value = 'SOFTWARE_DEVELOPMENT'>Software Development</option>
                     <option value = 'RESEARCH_DEVELOPMENT'>Research Development</option>
                 </select>
             </div>
             <div className='search'>
-             <Link to = "/personnel" className="btn btn-warning" onClick={this.applyFilters}>Search</Link>
+             <Link style={{marginLeft: "10px", marginTop: "6px"}} to = "/personnel" className="btn btn-warning" onClick={this.applyFilters}>Search</Link>
             </div>
         </div>
         

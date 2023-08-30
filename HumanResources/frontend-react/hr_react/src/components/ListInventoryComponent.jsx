@@ -65,19 +65,24 @@ export default class ListInventoryComponent extends Component {
         <div className='row'>
              <Link to="/add-inventory" className="btn btn-primary">Add Inventory</Link>
         </div>
+        <div className='row'>
+          <br></br>
+        </div>
         
-        <div className="search">
-                <select value = {inventoryTypeFilter} onChange={(e) => this.handleFilterChange('inventoryTypeFilter', e.target.value)}>
-                    <option selected hidden>Select a option</option>
+        <div className='row'>
+          <div className="search">
+                <select style={{ height: 37 }} value = {inventoryTypeFilter} onChange={(e) => this.handleFilterChange('inventoryTypeFilter', e.target.value)}>
+                    <option selected hidden>Select a inventory type</option>
                     <option value = 'MOUSE'>Mouse</option>
                     <option value = 'COMPUTER'>Computer</option>
                     <option value = 'DISK'>Disk</option>
                     <option value = 'CAR'>Car</option>
                 </select>
             </div>
-            <div className='row'>
+            <div className='search'>
              <Link to = "/inventory" className="btn btn-warning" onClick={this.applyFilters}>Search</Link>
             </div>
+        </div>
        
         <div className = "row">
             <table className = "table table-striped table-bordered">
