@@ -77,6 +77,7 @@ const UpdatePersonnelComponent = () =>{
           }
 
           if(tcControl(updatedPersonnel.tcNo)){
+              setErrorMessage("");
             PersonnelService.updatePersonnel(updatedPersonnel, id)
           .then(res => {
               console.log("Personnel updated succesfully", res);
