@@ -59,7 +59,8 @@ const LoginScreenComponent = () => {
 
     return(
     <div>
-        <div className='container'>
+        <div className='container' style={{margin: "auto", width: "50%", padding: "70px 0"}}>
+        <div style={{margin: "auto", width: "50%", padding: "70px 0"}}>
         <h2>Welcome!</h2>
         <form onSubmit={handleLogin}>
             <div className='form-group'>
@@ -83,6 +84,7 @@ const LoginScreenComponent = () => {
         </form>
         <div className='form-group'>
         <p style={{color: 'red'}}>{message}</p>
+        </div>
         </div>
         </div>
     </div>

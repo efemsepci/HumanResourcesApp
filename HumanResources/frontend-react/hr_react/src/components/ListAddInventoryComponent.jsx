@@ -37,7 +37,7 @@ const ListAddInventoryComponent = () =>{
 
     return(
         <div>
-            <h2>Inventory List</h2>
+            <div style = {{marginRight:"10px"}} className='row'><h2>Possible Inventory List</h2></div>
             <div style = {{marginRight:"10px"}} className='row'>
                 <Link  to="/personnel" className="btn btn-primary">Go Back</Link>
             </div>
