@@ -57,6 +57,7 @@ export default class AddPersonnelComponent extends Component {
 
         if(this.tcNoControl(personnel.tcNo)){
             PersonnelService.createPersonnel(personnel)
+            this.setState({errorMessage:""});
         }
         else{
             this.setState({errorMessage: "Invalid TC!"});
