@@ -59,7 +59,8 @@ public class Personnel {
     @Column(name = "is_working")
     private String isWorking;
 
-    @Column(name = "image")
+    @Lob
+    @Column(name = "image", columnDefinition = "LONGTEXT")
     private String imageBase64;
 
     @OneToMany(mappedBy = "personnel")
