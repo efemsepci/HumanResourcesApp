@@ -80,6 +80,15 @@ public class PersonnelServiceImpl implements PersonnelService{
         tempPersonnel.setGraduationStatus(personnel.getGraduationStatus());
         tempPersonnel.setImageBase64(personnel.getImageBase64());
 
+        if(tempPersonnel.getIsWorking().equals("No")){
+            List<Inventory> inventories = tempPersonnel.getInventories();
+            for(int i = 0; i < inventories.size(); i++){
+                Inventory tempInventory = inventories.get(i);
+                tempInventory.setPersonnel(null);
+                tempInventory.setInventoryStatus(InventoryStatus.IN_STORAGE);
+            }
+        }
+
         Personnel updatedPersonnel = personnelRepository.save(tempPersonnel);
         return ResponseEntity.ok(updatedPersonnel);
     }
